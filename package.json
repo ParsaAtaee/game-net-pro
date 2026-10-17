@@ -1,0 +1,101 @@
+{
+  "name": "gamenet-pro",
+  "productName": "GameNet Pro",
+  "version": "1.0.0",
+  "description": "سیستم جامع مدیریت هوشمند گیم‌نت، کلاینت‌ها و فاکتورها",
+  "author": "GameNet Pro Team",
+  "private": true,
+  "type": "module",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "vite --port=3000 --host=0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview",
+    "clean": "rm -rf dist dist-electron server.js",
+    "lint": "tsc --noEmit",
+    "electron:dev": "concurrently \"vite --port=3000\" \"electron .\"",
+    "electron:build": "vite build && electron-builder --win --x64 --ia32",
+    "electron:build:ia32": "vite build && electron-builder --win --ia32",
+    "electron:build:32": "vite build && electron-builder --win --ia32",
+    "electron:build:x64": "vite build && electron-builder --win --x64",
+    "electron:dist": "vite build && electron-builder --win --x64 --ia32",
+    "build:win": "vite build && electron-builder --win --x64 --ia32",
+    "build:win32": "vite build && electron-builder --win --ia32",
+    "build:win64": "vite build && electron-builder --win --x64",
+    "pack:win": "vite build && electron-builder --win --x64 --ia32"
+  },
+  "build": {
+    "appId": "com.gamenetpro.app",
+    "productName": "GameNet Pro",
+    "copyright": "Copyright © 2026 GameNet Pro",
+    "compression": "maximum",
+    "asar": true,
+    "directories": {
+      "output": "dist-electron",
+      "buildResources": "build"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "build/**/*",
+      "package.json"
+    ],
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "GameNet Pro",
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "installerHeaderIcon": "build/icon.ico",
+      "artifactName": "${productName}-Setup-${version}-${arch}.${ext}",
+      "warningsAsErrors": false
+    }
+  },
+  "dependencies": {
+    "@google/genai": "^2.4.0",
+    "@tailwindcss/vite": "^4.1.14",
+    "@vitejs/plugin-react": "^5.0.4",
+    "dotenv": "^17.2.3",
+    "express": "^4.21.2",
+    "jszip": "^3.10.2",
+    "lucide-react": "^0.546.0",
+    "motion": "^12.23.24",
+    "react": "^19.0.1",
+    "react-dom": "^19.0.1",
+    "vite": "^6.2.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.14.0",
+    "autoprefixer": "^10.4.21",
+    "concurrently": "^10.0.5",
+    "electron": "~43.7.6",
+    "electron-builder": "^26.15.3",
+    "esbuild": "^0.28.2",
+    "tailwindcss": "^4.1.14",
+    "tsx": "^4.21.0",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.3"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "GameNet Pro - سیستم مدیریت گیم نت",
+  "description": "سیستم جامع مدیریت گیم‌نت با مانیتورینگ سیستم‌ها، محاسبه هوشمند هزینه و زمان بازی، مدیریت کاربران و اعضای ویژه، مدیریت کامل بوفه و محصولات، و پایگاه داده پایدار ذخیره‌سازی اطلاعات",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
